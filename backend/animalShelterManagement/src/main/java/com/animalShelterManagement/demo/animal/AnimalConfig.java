@@ -10,17 +10,23 @@ import java.util.List;
 public class AnimalConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(AnimalRepository animalRepository){
+    CommandLineRunner animalCommandLineRunner(AnimalRepository animalRepository){
         return args -> {
             Animal zhiye = new Animal(
-              "zhiye"
+                    "zhiye",
+                    "wombat"
+            );
+
+            Animal xiaohuangji = new Animal(
+                    "xiaohuang",
+                    "chick"
             );
 
             Animal fuku = new Animal(
-                    "fuku"
-            );
+                    "fuku",
+                    "wombat");
 
-            animalRepository.saveAll(List.of(zhiye, fuku));
+            animalRepository.saveAll(List.of(zhiye, xiaohuangji, fuku));
         };
 
 

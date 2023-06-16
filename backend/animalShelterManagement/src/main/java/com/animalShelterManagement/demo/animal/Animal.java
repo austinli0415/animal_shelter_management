@@ -20,17 +20,20 @@ public class Animal {
 
     private Long id;
     private String name;
+    private String species_name;
 
     public Animal() {
     }
 
-    public Animal(Long id, String name) {
+    public Animal(Long id, String name, String species_name) {
         this.id = id;
         this.name = name;
+        this.species_name = species_name;
     }
 
-    public Animal(String name) {
+    public Animal(String name, String species_name) {
         this.name = name;
+        this.species_name = species_name;
     }
 
     public Long getId() {
@@ -49,11 +52,20 @@ public class Animal {
         return name;
     }
 
+    public String getSpecies_name() {
+        return species_name;
+    }
+
+    public void setSpecies_name(String species_name) {
+        this.species_name = species_name;
+    }
+
     @Override
     public String toString() {
         return "Animal{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", species_name='" + species_name + '\'' +
                 '}';
     }
 }
