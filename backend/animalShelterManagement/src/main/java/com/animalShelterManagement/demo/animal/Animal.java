@@ -1,5 +1,6 @@
 package com.animalShelterManagement.demo.animal;
 
+import com.animalShelterManagement.demo.species.Species;
 import jakarta.persistence.*;
 
 
@@ -20,20 +21,26 @@ public class Animal {
 
     private Long id;
     private String name;
-    private String species_name;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "speciesName", referencedColumnName = "name")
+    private Species species;
 
     public Animal() {
     }
 
-    public Animal(Long id, String name, String species_name) {
-        this.id = id;
+    public Animal(String name ) {
         this.name = name;
-        this.species_name = species_name;
     }
 
-    public Animal(String name, String species_name) {
+    public Animal(Long id, String name ) {
+        this.id = id;
         this.name = name;
-        this.species_name = species_name;
+    }
+
+    public Animal(String name, Species species) {
+        this.name = name;
+        this.species = species;
     }
 
     public Long getId() {
@@ -52,12 +59,12 @@ public class Animal {
         return name;
     }
 
-    public String getSpecies_name() {
-        return species_name;
+    public Species getSpecies() {
+        return species;
     }
 
-    public void setSpecies_name(String species_name) {
-        this.species_name = species_name;
+    public void setSpecies(Species species) {
+        this.species = species;
     }
 
     @Override
@@ -65,7 +72,7 @@ public class Animal {
         return "Animal{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", species_name='" + species_name + '\'' +
+                ", species=" + species +
                 '}';
     }
 }

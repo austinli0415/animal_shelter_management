@@ -22,6 +22,10 @@ public class AnimalService {
         return animalRepository.findAll();
     }
 
+    public List<Animal> getAnimalsBySpeciesId(Long id) {return animalRepository.findAllAnimalsBySpeciesId(id); }
+
+    public List<Animal> findAllAnimalsBySpeciesName(String speciesName) {return animalRepository.findAllAnimalsBySpeciesName(speciesName); }
+
     public void addNewAnimal(Animal animal) {
         Optional<Animal> animalOptional = animalRepository.findAnimalByName(animal.getName());
         if(animalOptional.isPresent()){

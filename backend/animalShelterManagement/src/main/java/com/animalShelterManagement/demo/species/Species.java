@@ -1,6 +1,9 @@
 package com.animalShelterManagement.demo.species;
 
+import com.animalShelterManagement.demo.animal.Animal;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table
@@ -16,21 +19,33 @@ public class Species {
             generator = "species_sequence"
     )
     private Long id;
-    private String species_name;
-    private int number_limit;
+    private String name;
+    private int numberLimit;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Animal> animals;
 
     public Species() {
     }
+    public Species(String speciesName) {
+        this.name = speciesName;
+    }
 
     public Species(String name, int number_limit) {
-        this.species_name = name;
-        this.number_limit = number_limit;
+        this.name = name;
+        this.numberLimit = number_limit;
     }
 
     public Species(Long id, String name, int number_limit) {
         this.id = id;
-        this.species_name = name;
-        this.number_limit = number_limit;
+        this.name = name;
+        this.numberLimit = number_limit;
+    }
+
+    public Species(String species_name, int number_limit, List<Animal> animals) {
+        this.name = species_name;
+        this.numberLimit = number_limit;
+        this.animals = animals;
     }
 
     public Long getId() {
@@ -41,28 +56,28 @@ public class Species {
         this.id = id;
     }
 
-    public String getSpecies_name() {
-        return species_name;
+    public String getName() {
+        return name;
     }
 
-    public void setSpecies_name(String species_name) {
-        this.species_name = species_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getNumber_limit() {
-        return number_limit;
+    public int getNumberLimit() {
+        return numberLimit;
     }
 
-    public void setNumber_limit(int number_limit) {
-        this.number_limit = number_limit;
+    public void setNumberLimit(int numberLimit) {
+        this.numberLimit = numberLimit;
     }
 
     @Override
     public String toString() {
         return "Species{" +
                 "id=" + id +
-                ", name='" + species_name + '\'' +
-                ", number_limit=" + number_limit +
+                ", name='" + name + '\'' +
+                ", number_limit=" + numberLimit +
                 '}';
     }
 }

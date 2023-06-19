@@ -13,6 +13,7 @@ public class SpeciesConfig {
     @Bean
     CommandLineRunner speciesCommandLineRunner(SpeciesRepository speciesRepository) {
         return args -> {
+            /*
             Species wombat = new Species(
                     "wombat",
                     4
@@ -24,6 +25,8 @@ public class SpeciesConfig {
             );
 
             speciesRepository.saveAll(List.of(wombat, chick));
+
+             */
         };
     }
 }

@@ -1,9 +1,11 @@
 package com.animalShelterManagement.demo.animal;
 
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/v1/animal")
@@ -19,6 +21,16 @@ public class AnimalController {
     @GetMapping
     public List<Animal> getAnimals(){
         return animalService.getAnimals();
+    }
+
+    @GetMapping(path = "/animalsBySpecies/{speciesId}")
+    public List<Animal> getAnimalsBySpecies(@PathVariable("speciesId") Long speciesId){
+        return animalService.getAnimalsBySpeciesId(speciesId);
+    }
+
+    @GetMapping(path = "/animalsBySpecies")
+    public List<Animal> findAllAnimalsBySpeciesName(@PathParam(value = "speciesName") String speciesName){
+        return animalService.findAllAnimalsBySpeciesName(speciesName);
     }
 
     @PostMapping
