@@ -13,13 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Breed {
 
-    @Id
-    private String breedName;
-
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "speciesName", referencedColumnName = "name")
-    private Species species;
-
+    @EmbeddedId
+    private BreedKey breedKey;
 
 }

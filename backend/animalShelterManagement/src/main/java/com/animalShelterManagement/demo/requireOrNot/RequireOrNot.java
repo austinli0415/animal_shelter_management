@@ -1,13 +1,19 @@
 package com.animalShelterManagement.demo.requireOrNot;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
 @Entity
 @Table
+@NoArgsConstructor
+@AllArgsConstructor
 public class RequireOrNot {
 
-    @Id
-    private long id;
+    @EmbeddedId
+    private RequireOrNotKey requireOrNotKey;
+
+    private String requiredForAdoption;
 }
