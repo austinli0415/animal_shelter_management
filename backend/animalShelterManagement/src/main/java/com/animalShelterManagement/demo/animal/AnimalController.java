@@ -28,11 +28,6 @@ public class AnimalController {
         return animalService.getAnimalsBySpeciesId(speciesId);
     }
 
-    @GetMapping(path = "/animalsByName")
-    public List<Animal> getAnimalsByName(){
-        return animalService.findAllAnimalsByName();
-    }
-
     @GetMapping(path = "/animalsBySpecies")
     public List<Animal> findAllAnimalsBySpeciesName(@PathParam(value = "speciesName") String speciesName){
         return animalService.findAllAnimalsBySpeciesName(speciesName);

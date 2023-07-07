@@ -1,11 +1,20 @@
 package com.animalShelterManagement.demo.animal;
 
 import com.animalShelterManagement.demo.species.Species;
+import com.animalShelterManagement.demo.user.User;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 
 
 @Entity
 @Table
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Animal {
 
     @Id
@@ -18,16 +27,25 @@ public class Animal {
             strategy = GenerationType.SEQUENCE,
             generator = "animal_sequence"
     )
-
     private Long id;
     private String name;
+
+    private String sex;
+    private String alterationStatus;
+    private int ageMonths;
+    private String description;
+    private String microchipId;
+    private String surrenderReason;
+    private LocalDate surrenderDate;
+    private String surrenderByAnimalControl;
+    @OneToOne
+    @JoinColumn(name = "userEnteredSurrenderInfo", referencedColumnName = "email")
+    private User userEnteredSurrenderInfo;
+    //private String userEnteredSurrenderInfo;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "speciesName", referencedColumnName = "name")
     private Species species;
-
-    public Animal() {
-    }
 
     public Animal(String name ) {
         this.name = name;
@@ -43,36 +61,4 @@ public class Animal {
         this.species = species;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Species getSpecies() {
-        return species;
-    }
-
-    public void setSpecies(Species species) {
-        this.species = species;
-    }
-
-    @Override
-    public String toString() {
-        return "Animal{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", species=" + species +
-                '}';
-    }
 }
