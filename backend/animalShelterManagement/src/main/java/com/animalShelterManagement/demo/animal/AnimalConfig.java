@@ -1,6 +1,8 @@
 package com.animalShelterManagement.demo.animal;
 
 import com.animalShelterManagement.demo.species.Species;
+import com.animalShelterManagement.demo.species.SpeciesRepository;
+import com.animalShelterManagement.demo.species.SpeciesService;
 import com.animalShelterManagement.demo.user.Role;
 import com.animalShelterManagement.demo.user.User;
 import com.animalShelterManagement.demo.user.UserRepository;
@@ -22,12 +24,13 @@ public class AnimalConfig {
 
     @Bean
     CommandLineRunner animalCommandLineRunner(AnimalRepository animalRepository,
+                                              SpeciesRepository speciesRepository,
                                               VaccinationRepository vaccinationRepository,
                                               VaccinationTypeRepository vaccinationTypeRepository,
                                               UserRepository userRepository){
         return args -> {
 
-            User tRex = new User("t", "Rex", "tRex@wuyueshan.org", "1234", Role.EMPLOYEE);
+            User tRex = new User("tRex","t", "Rex", "tRex@wuyueshan.org", "1234", "688932", Role.EMPLOYEE);
 
             Species wombat = new Species("wombat", 4);
             Species chick = new Species("chick", 2);
@@ -49,7 +52,7 @@ public class AnimalConfig {
             VaccinationKey k1 = new VaccinationKey(zhiye, bordetella, LocalDate.now());
             Vaccination v1 = new Vaccination(k1, LocalDate.now().plusDays(100), "2hjk", tRex);
 
-
+            speciesRepository.saveAll(List.of(wombat, chick));
             userRepository.saveAll(List.of(tRex));
             animalRepository.saveAll(List.of(zhiye, xiaohuangji, fuku));
             vaccinationTypeRepository.saveAll(List.of(bordetella));

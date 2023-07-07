@@ -12,8 +12,6 @@ import java.util.Optional;
 public interface AnimalRepository extends JpaRepository<Animal, Long> {
     Optional<Animal> findAnimalByName(String name);
 
-    List<Animal> findAllAnimalsBySpeciesId(Long id);
-
     List<Animal> findAllAnimalsBySpeciesName(String speciesName);
 
     @Query(value = "SELECT * FROM animal where id = 1", nativeQuery = true)

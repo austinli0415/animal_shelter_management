@@ -8,6 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface SpeciesRepository extends JpaRepository<Species, Long> {
+public interface SpeciesRepository extends JpaRepository<Species, String> {
 
 }

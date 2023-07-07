@@ -38,12 +38,12 @@ public class Animal {
     private String surrenderReason;
     private LocalDate surrenderDate;
     private String surrenderByAnimalControl;
+
     @OneToOne
     @JoinColumn(name = "userEnteredSurrenderInfo", referencedColumnName = "email")
     private User userEnteredSurrenderInfo;
-    //private String userEnteredSurrenderInfo;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "speciesName", referencedColumnName = "name")
     private Species species;
 
