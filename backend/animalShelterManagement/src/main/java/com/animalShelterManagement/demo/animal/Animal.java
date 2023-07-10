@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-
 @Entity
 @Table
 @Data
@@ -61,4 +60,17 @@ public class Animal {
         this.species = species;
     }
 
+    public Animal(String name, String sex, String alterationStatus, int ageMonths, String description, String microchipId, String surrenderReason, LocalDate surrenderDate, String surrenderByAnimalControl, User userEnteredSurrenderInfo, Species species) {
+        this.name = name;
+        this.sex = sex;
+        this.alterationStatus = alterationStatus;
+        this.ageMonths = ageMonths;
+        this.description = description;
+        this.microchipId = microchipId;
+        this.surrenderReason = surrenderReason;
+        this.surrenderDate = surrenderDate;
+        this.surrenderByAnimalControl = surrenderByAnimalControl;
+        this.userEnteredSurrenderInfo = userEnteredSurrenderInfo;
+        this.species = species;
+    }
 }
