@@ -1,5 +1,7 @@
 package com.animalShelterManagement.demo.animal;
 
+import com.animalShelterManagement.demo.adopt.Adopt;
+import com.animalShelterManagement.demo.adopt.AdoptRepository;
 import com.animalShelterManagement.demo.adoptionApplicant.AdoptionApplicant;
 import com.animalShelterManagement.demo.adoptionApplicant.AdoptionApplicantRepository;
 import com.animalShelterManagement.demo.adoptionApplication.AdoptionApplication;
@@ -10,6 +12,9 @@ import com.animalShelterManagement.demo.assignChoose.AssignChooseRepository;
 import com.animalShelterManagement.demo.breed.Breed;
 import com.animalShelterManagement.demo.breed.BreedKey;
 import com.animalShelterManagement.demo.breed.BreedRepository;
+import com.animalShelterManagement.demo.requireOrNot.RequireOrNot;
+import com.animalShelterManagement.demo.requireOrNot.RequireOrNotKey;
+import com.animalShelterManagement.demo.requireOrNot.RequireOrNotRepository;
 import com.animalShelterManagement.demo.species.Species;
 import com.animalShelterManagement.demo.species.SpeciesRepository;
 import com.animalShelterManagement.demo.species.SpeciesService;
@@ -49,7 +54,9 @@ public class AnimalConfig {
                                               AdoptionApplicantRepository adoptionApplicantRepository,
                                               AdoptionApplicationRepository adoptionApplicationRepository,
                                               BreedRepository breedRepository,
-                                              AssignChooseRepository assignChooseRepository){
+                                              AssignChooseRepository assignChooseRepository,
+                                              RequireOrNotRepository requireOrNotRepository,
+                                              AdoptRepository adoptRepository){
         return args -> {
 
             User tRex = new User("tRex","t", "Rex", "tRex@wuyueshan.org", "1234", "688932", Role.EMPLOYEE);
@@ -77,14 +84,18 @@ public class AnimalConfig {
 
             AssignChooseKey assignChooseKey = new AssignChooseKey(wine, breed);
             AssignChoose assignChoose = new AssignChoose(assignChooseKey);
-            System.out.println("assignChooseKey is " + assignChooseKey);
 
             VaccinationType bordetella = new VaccinationType("Bordetella");
             VaccinationKey k1 = new VaccinationKey(zhiye, bordetella, LocalDate.now());
             Vaccination v1 = new Vaccination(k1, LocalDate.now().plusDays(100), "2hjk", tRex);
 
+            RequireOrNotKey requireOrNotKey = new RequireOrNotKey(wombat, bordetella);
+            RequireOrNot requireOrNot = new RequireOrNot(requireOrNotKey, "No");
+
             AdoptionApplicant adoptionApplicant = new AdoptionApplicant("21@g.com", "2", "1", "43", "Plano", "Garda", "Texas", "423");
             AdoptionApplication adoptionApplication = new AdoptionApplication(1L, "2", "2", LocalDate.of(2023, 1,1), "pending", adoptionApplicant);
+
+            Adopt adopt = new Adopt(1L, fuku, adoptionApplication, 100, LocalDate.of(2006, 5, 12));
 
             userRepository.saveAll(List.of(tRex, volunteer));
             volunteerWorkRepository.saveAll(List.of(volunteerWork));
@@ -96,12 +107,12 @@ public class AnimalConfig {
 
             adoptionApplicantRepository.saveAll(List.of(adoptionApplicant));
             adoptionApplicationRepository.saveAll(List.of(adoptionApplication));
+            adoptRepository.saveAll(List.of(adopt));
 
             vaccinationTypeRepository.saveAll(List.of(bordetella));
             vaccinationRepository.saveAll(List.of(v1));
+            requireOrNotRepository.saveAll(List.of(requireOrNot));
 
         };
-
-
     }
 }
