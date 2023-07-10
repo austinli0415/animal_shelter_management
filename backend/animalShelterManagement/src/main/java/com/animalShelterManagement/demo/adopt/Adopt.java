@@ -25,7 +25,7 @@ public class Adopt {
     private Animal animal;
 
     @OneToOne
-    @JoinColumn(name = "applicationId", referencedColumnName = "id")
+    @JoinColumn(name = "applicationId", referencedColumnName = "applicationId")
     private AdoptionApplication adoptionApplication;
 
     private float adoptionFee;

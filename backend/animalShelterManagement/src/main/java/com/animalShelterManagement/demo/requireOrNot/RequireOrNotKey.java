@@ -19,7 +19,7 @@ import java.io.Serializable;
 public class RequireOrNotKey implements Serializable {
 
     @ManyToOne
-    @JoinColumn(name = "speciesName", referencedColumnName = "name")
+    @JoinColumn(name = "speciesName", referencedColumnName = "speciesName")
     private Species species;
 
     // @ManyToMany

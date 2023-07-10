@@ -16,7 +16,7 @@ import java.util.List;
 public class Species {
 
     @Id
-    private String name;
+    private String speciesName;
     private int numberLimit;
 
     //@OneToMany

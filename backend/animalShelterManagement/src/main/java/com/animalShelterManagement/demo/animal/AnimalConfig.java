@@ -58,7 +58,7 @@ public class AnimalConfig {
                                               RequireOrNotRepository requireOrNotRepository,
                                               AdoptRepository adoptRepository){
         return args -> {
-
+            /*
             User tRex = new User("tRex","t", "Rex", "tRex@wuyueshan.org", "1234", "688932", Role.EMPLOYEE);
             User volunteer = new User("vo", "v", "teer", "vt@wuyueshan.org", "124", "697", Role.VOLUNTEER);
 
@@ -112,6 +112,8 @@ public class AnimalConfig {
             vaccinationTypeRepository.saveAll(List.of(bordetella));
             vaccinationRepository.saveAll(List.of(v1));
             requireOrNotRepository.saveAll(List.of(requireOrNot));
+
+             */
 
         };
     }

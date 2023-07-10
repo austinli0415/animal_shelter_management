@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class AdoptionApplicant {
 
     @Id
-    private String email;
+    private String emailAddress;
     private String applicantFirstName;
     private String applicantLastName;
     private String zipCode;

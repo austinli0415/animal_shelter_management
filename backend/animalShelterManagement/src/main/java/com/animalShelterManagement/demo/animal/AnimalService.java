@@ -22,7 +22,7 @@ public class AnimalService {
         return animalRepository.findAll();
     }
 
-    public List<Animal> findAllAnimalsBySpeciesName(String speciesName) {return animalRepository.findAllAnimalsBySpeciesName(speciesName); }
+    public List<Animal> findAllAnimalsBySpeciesName(String speciesName) {return animalRepository.findAllAnimalsBySpeciesSpeciesName(speciesName); }
 
     public void addNewAnimal(Animal animal) {
         Optional<Animal> animalOptional = animalRepository.findAnimalByName(animal.getName());

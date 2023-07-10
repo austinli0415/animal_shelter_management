@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class AdoptionApplication {
     @Id
     @GeneratedValue
-    private Long id;
+    private Long applicationId;
 
     private String coApplicantFirstName;
     private String coApplicantLastName;
@@ -25,6 +25,6 @@ public class AdoptionApplication {
     private String applicationState;
 
     @ManyToOne
-    @JoinColumn(name = "email", referencedColumnName = "email")
+    @JoinColumn(name = "emailAddress", referencedColumnName = "emailAddress")
     private AdoptionApplicant adoptionApplicant;
 }

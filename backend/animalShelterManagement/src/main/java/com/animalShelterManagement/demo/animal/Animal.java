@@ -39,11 +39,11 @@ public class Animal {
     private String surrenderByAnimalControl;
 
     @OneToOne
-    @JoinColumn(name = "userEnteredSurrenderInfo", referencedColumnName = "email")
+    @JoinColumn(name = "userEnteredSurrenderInfo", referencedColumnName = "userName")
     private User userEnteredSurrenderInfo;
 
     @ManyToOne
-    @JoinColumn(name = "speciesName", referencedColumnName = "name")
+    @JoinColumn(name = "speciesName", referencedColumnName = "speciesName")
     private Species species;
 
     public Animal(String name ) {

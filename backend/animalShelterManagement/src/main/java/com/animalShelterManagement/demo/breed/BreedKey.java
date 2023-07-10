@@ -20,6 +20,6 @@ public class BreedKey implements Serializable {
     private String breedName;
 
     @ManyToOne
-    @JoinColumn(name = "speciesName", referencedColumnName = "name")
+    @JoinColumn(name = "speciesName", referencedColumnName = "speciesName")
     private Species species;
 }
