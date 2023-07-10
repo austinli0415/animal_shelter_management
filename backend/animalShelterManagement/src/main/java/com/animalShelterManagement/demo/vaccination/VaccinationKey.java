@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class VaccinationKey implements Serializable {
 
     @ManyToOne
-    @JoinColumn(name = "petId", referencedColumnName = "id")
+    @JoinColumn(name = "petId", referencedColumnName = "petId")
     private Animal animal;
 
     @ManyToOne

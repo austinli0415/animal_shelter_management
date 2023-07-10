@@ -16,17 +16,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Adopt {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    @OneToOne
-    @JoinColumn(name = "petId", referencedColumnName = "id")
-    private Animal animal;
-
-    @OneToOne
-    @JoinColumn(name = "applicationId", referencedColumnName = "applicationId")
-    private AdoptionApplication adoptionApplication;
+    @EmbeddedId
+    private AdoptKey adoptKey;
 
     private float adoptionFee;
     private LocalDate adoptionDate;

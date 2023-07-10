@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Embeddable
@@ -16,7 +17,7 @@ import java.io.Serializable;
 public class AssignChooseKey implements Serializable {
 
     @OneToOne
-    @JoinColumn(name = "petId", referencedColumnName = "id")
+    @JoinColumn(name = "petId", referencedColumnName = "petId")
     private Animal animal;
 
     @ManyToOne

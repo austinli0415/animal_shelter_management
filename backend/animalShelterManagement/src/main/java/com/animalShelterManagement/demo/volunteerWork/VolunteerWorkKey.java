@@ -20,7 +20,7 @@ import java.time.LocalDate;
 public class VolunteerWorkKey implements Serializable {
 
     @ManyToOne
-    @JoinColumn(name = "userName", referencedColumnName = "userName")
+    @JoinColumn(name = "username", referencedColumnName = "username")
     private User user;
 
     private LocalDate workDate;

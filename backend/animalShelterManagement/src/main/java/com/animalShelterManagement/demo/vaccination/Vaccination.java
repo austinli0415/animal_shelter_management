@@ -23,7 +23,7 @@ public class Vaccination {
     private String vaccinationNumber;
 
     @ManyToOne
-    @JoinColumn(name = "userName", referencedColumnName = "userName")
+    @JoinColumn(name = "username", referencedColumnName = "username")
     private User user;
 
 }

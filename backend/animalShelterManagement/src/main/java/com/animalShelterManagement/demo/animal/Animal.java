@@ -26,7 +26,7 @@ public class Animal {
             strategy = GenerationType.SEQUENCE,
             generator = "animal_sequence"
     )
-    private Long id;
+    private Long petId;
     private String name;
 
     private String sex;
@@ -51,7 +51,7 @@ public class Animal {
     }
 
     public Animal(Long id, String name ) {
-        this.id = id;
+        this.petId = id;
         this.name = name;
     }
 

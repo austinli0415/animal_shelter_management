@@ -10,6 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -18,29 +19,30 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
 @Table(name = "_user")
 public class User implements UserDetails {
 
     @Id
-    private String userName;
+    private String username;
     private String firstName;
     private String lastName;
-    private String email;
+    private String emailAddress;
     private String password;
-    private String phoneNumber;
+    private LocalDate dateStarted;
 
+    private String phoneNumber;
     @Enumerated(EnumType.STRING)
     private Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority(username));
+        //return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     @Override
