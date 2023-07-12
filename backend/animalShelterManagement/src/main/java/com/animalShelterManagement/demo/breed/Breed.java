@@ -20,7 +20,7 @@ public class Breed {
     //@EmbeddedId
     //private BreedKey breedKey;
 
-    
+
     @Id
     private String breedName;
 

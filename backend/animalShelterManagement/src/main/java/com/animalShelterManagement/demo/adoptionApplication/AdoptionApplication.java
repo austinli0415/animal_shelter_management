@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdoptionApplication {
+
     @Id
     @GeneratedValue
     private Long applicationId;
