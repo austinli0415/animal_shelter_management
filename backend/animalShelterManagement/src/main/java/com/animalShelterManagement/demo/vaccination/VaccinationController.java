@@ -27,4 +27,9 @@ public class VaccinationController {
         return vaccinationService.findAllVaccinationsByPetId(petId);
     }
 
+    @GetMapping(path = "/vaccinationExpiredAt")
+    public List<Vaccination> findVaccinationsExpiredAt(@PathParam("months") int months){
+        return vaccinationService.findVaccinationsExpiredAt(months);
+    }
+
 }

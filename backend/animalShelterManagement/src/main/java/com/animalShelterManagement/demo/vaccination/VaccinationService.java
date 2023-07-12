@@ -4,6 +4,7 @@ import com.animalShelterManagement.demo.animal.Animal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,10 @@ public class VaccinationService {
     }
 
     public List<Vaccination> getVaccinations(){return vaccinationRepository.findAll();}
+
+    public List<Vaccination> findVaccinationsExpiredAt(int months){
+        return vaccinationRepository.findByExpirationDateBetween(LocalDate.now(), LocalDate.now().plusMonths(months));
+    }
 
     public List<Vaccination> findAllVaccinationsByPetId(Long petId){
         return vaccinationRepository.findAllVaccinationsByVaccinationKeyAnimalAnimalId(petId);
