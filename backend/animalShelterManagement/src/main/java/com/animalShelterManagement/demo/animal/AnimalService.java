@@ -53,7 +53,12 @@ public class AnimalService {
     List<Animal> findAnimalsBeforeDate(int monthsBefore) {
         // subtract 3 days from today
         LocalDate monthsBeforeDate = LocalDate.now().minusMonths(monthsBefore);
-        return animalRepository.findAllWithDateAfter(monthsBeforeDate);
+        return animalRepository.findBySurrenderDateAfter(monthsBeforeDate);
+    }
+
+    int countBySurrenderDateAfter(int monthsBefore){
+        LocalDate monthsBeforeDate = LocalDate.now().minusMonths(monthsBefore);
+        return animalRepository.countBySurrenderDateAfter(monthsBeforeDate);
     }
 
     public void addNewAnimal(Animal animal) {

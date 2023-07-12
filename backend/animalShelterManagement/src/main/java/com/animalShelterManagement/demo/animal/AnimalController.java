@@ -47,8 +47,13 @@ public class AnimalController {
     }
 
     @GetMapping(path = "/animalsBeforeMonths")
-    public List<Animal> findAnimalsBeforeDate(@PathParam(value = "yearsBefore") int monthsBefore){
+    public List<Animal> findAnimalsBeforeDate(@PathParam(value = "monthsBefore") int monthsBefore){
         return animalService.findAnimalsBeforeDate(monthsBefore);
+    }
+
+    @GetMapping(path = "/countBySurrenderDateMonthsBefore")
+    public int countBySurrenderDateAfter(@PathParam(value = "monthsBefore") int monthsBefore){
+        return animalService.countBySurrenderDateAfter(monthsBefore);
     }
 
     @PostMapping

@@ -19,9 +19,11 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
     @Query(value = "SELECT * FROM animal where id = 1", nativeQuery = true)
     List<Animal> findAllAnimalsByName();
 
-    @Query(value = "select a from Animal a where a.surrenderDate >= :monthsBeforeDate")
-    List<Animal> findAllWithDateAfter(@Param("monthsBeforeDate") LocalDate monthsBeforeDate);
+    //@Query(value = "select a from Animal a where a.surrenderDate >= :monthsBeforeDate")
+    //List<Animal> findAllWithDateAfter(@Param("monthsBeforeDate") LocalDate monthsBeforeDate);
 
+    List<Animal> findBySurrenderDateAfter(@Param("monthsBeforeDate") LocalDate monthsBeforeDate);
 
+    int countBySurrenderDateAfter(@Param("monthsBeforeDate") LocalDate monthsBeforeDate);
 
 }
