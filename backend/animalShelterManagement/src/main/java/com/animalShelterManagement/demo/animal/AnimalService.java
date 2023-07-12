@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -49,6 +50,11 @@ public class AnimalService {
         return assignChooseService.findAnimalWithBreed(animalId);
     }
 
+    List<Animal> findAnimalsBeforeDate(int monthsBefore) {
+        // subtract 3 days from today
+        LocalDate monthsBeforeDate = LocalDate.now().minusMonths(monthsBefore);
+        return animalRepository.findAllWithDateAfter(monthsBeforeDate);
+    }
 
     public void addNewAnimal(Animal animal) {
         Optional<Animal> animalOptional = animalRepository.findAnimalByName(animal.getName());

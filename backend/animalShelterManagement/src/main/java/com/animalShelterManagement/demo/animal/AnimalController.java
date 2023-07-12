@@ -2,6 +2,7 @@ package com.animalShelterManagement.demo.animal;
 
 import com.animalShelterManagement.demo.assignChoose.AssignChoose;
 import com.animalShelterManagement.demo.species.Species;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +44,11 @@ public class AnimalController {
     @GetMapping(path = "/animalWithBreed")
     public List<AssignChoose> findAnimalWithBreed(@PathParam(value = "animalId") Long animalId){
         return animalService.findAnimalWithBreed(animalId);
+    }
+
+    @GetMapping(path = "/animalsBeforeMonths")
+    public List<Animal> findAnimalsBeforeDate(@PathParam(value = "yearsBefore") int monthsBefore){
+        return animalService.findAnimalsBeforeDate(monthsBefore);
     }
 
     @PostMapping
