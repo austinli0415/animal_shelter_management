@@ -1,5 +1,8 @@
 package com.animalShelterManagement.demo.animal;
 
+import com.animalShelterManagement.demo.species.Species;
+import com.animalShelterManagement.demo.species.SpeciesRepository;
+import com.animalShelterManagement.demo.species.SpeciesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,10 +15,14 @@ import java.util.Optional;
 public class AnimalService {
 
     private final AnimalRepository animalRepository;
+    private final SpeciesRepository speciesRepository;
+    private final SpeciesService speciesService;
 
     @Autowired
-    public AnimalService(AnimalRepository animalRepository) {
+    public AnimalService(AnimalRepository animalRepository, SpeciesRepository speciesRepository, SpeciesService speciesService) {
         this.animalRepository = animalRepository;
+        this.speciesRepository = speciesRepository;
+        this.speciesService = speciesService;
     }
 
     public List<Animal> getAnimals(){
@@ -47,5 +54,10 @@ public class AnimalService {
         if(name != null && name.length() > 0 && !Objects.equals(animal.getName(), name)){
             animal.setName(name);
         }
+    }
+    public int findAvailableSpacesBySpecies(String speciesName) {
+        int totalSpaces =  speciesService.findAvailableSpacesBySpeciesName(speciesName);
+        int occupiedSpaces = findAllAnimalsBySpeciesName(speciesName).size();
+        return totalSpaces - occupiedSpaces;
     }
 }

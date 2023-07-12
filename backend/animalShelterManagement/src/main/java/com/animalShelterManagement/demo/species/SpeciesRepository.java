@@ -9,5 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface SpeciesRepository extends JpaRepository<Species, String> {
+    Optional<Species> findNumberLimitBySpeciesName(String speciesName);
 
 }

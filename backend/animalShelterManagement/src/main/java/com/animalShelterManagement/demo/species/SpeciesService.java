@@ -22,4 +22,11 @@ public class SpeciesService {
         return speciesRepository.findAll();
     }
 
+    public int findAvailableSpacesBySpeciesName(String speciesName) {
+        Optional<Species> speciesOptional = speciesRepository.findNumberLimitBySpeciesName(speciesName);
+        if(!speciesOptional.isPresent()){
+            return 0;
+        }
+        return speciesOptional.get().getNumberLimit();
+    }
 }
