@@ -19,4 +19,6 @@ public class AssignChooseService {
     public List<AssignChoose> getAssignChooses() {
         return assignChooseRepository.findAll();
     }
+
+    public List<AssignChoose> findAnimalWithBreed(Long animalId){return assignChooseRepository.findByAssignChooseKeyAnimalAnimalId(animalId);}
 }

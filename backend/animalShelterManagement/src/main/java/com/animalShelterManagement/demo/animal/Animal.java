@@ -17,16 +17,8 @@ import java.time.LocalDate;
 public class Animal {
 
     @Id
-    @SequenceGenerator(
-            name="animal_sequence",
-            sequenceName = "animal_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "animal_sequence"
-    )
-    private Long petId;
+    @GeneratedValue
+    private Long animalId;
     private String name;
 
     private String sex;
@@ -51,7 +43,7 @@ public class Animal {
     }
 
     public Animal(Long id, String name ) {
-        this.petId = id;
+        this.animalId = id;
         this.name = name;
     }
 

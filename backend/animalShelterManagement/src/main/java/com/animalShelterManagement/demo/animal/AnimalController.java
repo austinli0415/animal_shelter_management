@@ -1,5 +1,6 @@
 package com.animalShelterManagement.demo.animal;
 
+import com.animalShelterManagement.demo.assignChoose.AssignChoose;
 import com.animalShelterManagement.demo.species.Species;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,16 @@ public class AnimalController {
     @GetMapping(path = "/availableSpacesBySpecies")
     public int findAvailableSpacesBySpecies(@PathParam(value = "speciesName") String speciesName){
         return animalService.findAvailableSpacesBySpecies(speciesName);
+    }
+
+    @GetMapping(path = "/animalById")
+    public Animal findAnimalById(@PathParam(value = "animalId") Long animalId){
+        return animalService.findAnimalById(animalId);
+    }
+
+    @GetMapping(path = "/animalWithBreed")
+    public List<AssignChoose> findAnimalWithBreed(@PathParam(value = "animalId") Long animalId){
+        return animalService.findAnimalWithBreed(animalId);
     }
 
     @PostMapping

@@ -17,4 +17,6 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
     @Query(value = "SELECT * FROM animal where id = 1", nativeQuery = true)
     List<Animal> findAllAnimalsByName();
 
+
+
 }

@@ -21,4 +21,5 @@ public class AssignChooseController {
 
     @GetMapping
     public List<AssignChoose> getAssignChooses(){return assignChooseService.getAssignChooses();}
+
 }

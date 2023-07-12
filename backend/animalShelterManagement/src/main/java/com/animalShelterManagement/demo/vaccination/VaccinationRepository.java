@@ -8,5 +8,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface VaccinationRepository extends JpaRepository<Vaccination, VaccinationKey> {
-    List<Vaccination> findAllVaccinationsByVaccinationKeyAnimalPetId(Long petId);
+    List<Vaccination> findAllVaccinationsByVaccinationKeyAnimalAnimalId(Long petId);
 }

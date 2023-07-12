@@ -20,6 +20,6 @@ public class VaccinationService {
     public List<Vaccination> getVaccinations(){return vaccinationRepository.findAll();}
 
     public List<Vaccination> findAllVaccinationsByPetId(Long petId){
-        return vaccinationRepository.findAllVaccinationsByVaccinationKeyAnimalPetId(petId);
+        return vaccinationRepository.findAllVaccinationsByVaccinationKeyAnimalAnimalId(petId);
     }
 }

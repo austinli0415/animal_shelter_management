@@ -1,6 +1,7 @@
 package com.animalShelterManagement.demo.animal;
 
-import com.animalShelterManagement.demo.species.Species;
+import com.animalShelterManagement.demo.assignChoose.AssignChoose;
+import com.animalShelterManagement.demo.assignChoose.AssignChooseService;
 import com.animalShelterManagement.demo.species.SpeciesRepository;
 import com.animalShelterManagement.demo.species.SpeciesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +18,14 @@ public class AnimalService {
     private final AnimalRepository animalRepository;
     private final SpeciesRepository speciesRepository;
     private final SpeciesService speciesService;
+    private final AssignChooseService assignChooseService;
 
     @Autowired
-    public AnimalService(AnimalRepository animalRepository, SpeciesRepository speciesRepository, SpeciesService speciesService) {
+    public AnimalService(AnimalRepository animalRepository, SpeciesRepository speciesRepository, SpeciesService speciesService, AssignChooseService assignChooseService) {
         this.animalRepository = animalRepository;
         this.speciesRepository = speciesRepository;
         this.speciesService = speciesService;
+        this.assignChooseService = assignChooseService;
     }
 
     public List<Animal> getAnimals(){
@@ -30,6 +33,22 @@ public class AnimalService {
     }
 
     public List<Animal> findAllAnimalsBySpeciesName(String speciesName) {return animalRepository.findAllAnimalsBySpeciesSpeciesName(speciesName); }
+
+    public Animal findAnimalById(Long animalId){
+        return animalRepository.findById(animalId)
+                .orElseThrow(() -> new IllegalStateException("animal with id " + animalId + " does not exist"));
+    }
+
+    public int findAvailableSpacesBySpecies(String speciesName) {
+        int totalSpaces =  speciesService.findAvailableSpacesBySpeciesName(speciesName);
+        int occupiedSpaces = findAllAnimalsBySpeciesName(speciesName).size();
+        return totalSpaces - occupiedSpaces;
+    }
+
+    public List<AssignChoose> findAnimalWithBreed(Long animalId){
+        return assignChooseService.findAnimalWithBreed(animalId);
+    }
+
 
     public void addNewAnimal(Animal animal) {
         Optional<Animal> animalOptional = animalRepository.findAnimalByName(animal.getName());
@@ -55,9 +74,5 @@ public class AnimalService {
             animal.setName(name);
         }
     }
-    public int findAvailableSpacesBySpecies(String speciesName) {
-        int totalSpaces =  speciesService.findAvailableSpacesBySpeciesName(speciesName);
-        int occupiedSpaces = findAllAnimalsBySpeciesName(speciesName).size();
-        return totalSpaces - occupiedSpaces;
-    }
+
 }

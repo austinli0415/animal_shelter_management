@@ -18,7 +18,7 @@ import java.util.List;
 public class AssignChooseKey implements Serializable {
 
     @ManyToOne
-    @JoinColumn(name = "petId", referencedColumnName = "petId")
+    @JoinColumn(name = "animalId", referencedColumnName = "animalId")
     private Animal animal;
 
     @ManyToOne

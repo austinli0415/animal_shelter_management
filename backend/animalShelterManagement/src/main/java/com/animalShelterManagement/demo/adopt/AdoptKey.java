@@ -19,7 +19,7 @@ import java.io.Serializable;
 public class AdoptKey implements Serializable {
 
     @OneToOne
-    @JoinColumn(name = "petId", referencedColumnName = "petId")
+    @JoinColumn(name = "animalId", referencedColumnName = "animalId")
     private Animal animal;
 
     @OneToOne
