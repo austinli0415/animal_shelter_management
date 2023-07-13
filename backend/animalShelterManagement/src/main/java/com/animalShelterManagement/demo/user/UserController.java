@@ -25,4 +25,12 @@ public class UserController {
         return userService.getVolunteers();
     }
 
+    @GetMapping(path = "/volunteerByFirstNameOrLastName")
+    public List<Object> getVolunteerByFirstNameOrLastName(
+            @PathParam(value = "firstName") String firstName,
+            @PathParam(value = "lastName") String lastName)
+    {
+        return userService.getVolunteerByFirstNameOrLastName(firstName, lastName);
+    }
+
 }

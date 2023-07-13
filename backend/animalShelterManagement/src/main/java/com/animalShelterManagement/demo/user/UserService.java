@@ -18,4 +18,9 @@ public class UserService {
     public List<Object> getVolunteers(){
         return userRepository.getVolunteers();
     }
+
+    public List<Object> getVolunteerByFirstNameOrLastName(String firstName, String lastName) {
+        return userRepository.getVolunteerByFirstNameOrLastName(firstName, lastName);
+    }
+
 }

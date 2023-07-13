@@ -2,6 +2,7 @@ package com.animalShelterManagement.demo.animal;
 
 import com.animalShelterManagement.demo.species.Species;
 import com.animalShelterManagement.demo.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,6 +31,7 @@ public class Animal {
     private LocalDate surrenderDate;
     private String surrenderByAnimalControl;
 
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "userEnteredSurrenderInfo", referencedColumnName = "userName")
     private User userEnteredSurrenderInfo;
