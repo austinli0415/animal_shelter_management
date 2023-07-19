@@ -25,8 +25,6 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request
     ){
-        System.out.println("email is " + request.getEmailAddress());
-        System.out.println("email is " + request.getPassword());
         return ResponseEntity.ok(service.authenticate(request));
     }
 }

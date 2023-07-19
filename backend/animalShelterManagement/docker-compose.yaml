@@ -1,0 +1,24 @@
+services:
+  db:
+    ports:
+      - 5432:5432
+    container_name: postgres_container
+    image: postgres
+    environment:
+      - POSTGRES_DB=animal
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    restart: always
+  backend:
+    build: .
+    container_name: animal_shelter_management
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/animal
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=password
+    depends_on:
+      - db
+    restart: always
+
